@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精選聽書-樊登系列 - 帆書聽書</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>帆書聽書</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a href="new-books.html" class="nav-link">新書書訊</a>
+                </li>
+                <li class="nav-item">
+                    <a href="featured-books.html" class="nav-link active">精選聽書-樊登系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link">線上課程—帆書系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#community" class="nav-link">加入社群</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>精選聽書-樊登系列</h1>
+                <p>樊登老師親自解讀的精選好書，用深入淺出的方式帶您領略書中智慧</p>
+            </div>
+        </section>
+
+        <section class="books-listing">
+            <div class="container">
+                <div class="books-grid" id="all-featured-books">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 帆書聽書. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const featuredBooks = await fetchBooksData('books');
+            displayBooks('all-featured-books', featuredBooks);
+        });
+    </script>
+</body>
+</html>

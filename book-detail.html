@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>書籍詳情 - 帆書聽書</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>帆書聽書</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a href="new-books.html" class="nav-link">新書書訊</a>
+                </li>
+                <li class="nav-item">
+                    <a href="featured-books.html" class="nav-link">精選聽書-樊登系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link">線上課程—帆書系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#community" class="nav-link">加入社群</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="book-detail" id="book-detail">
+                <div class="book-detail-header">
+                    <img id="book-image" src="" alt="" class="book-detail-image">
+                    <div class="book-detail-info">
+                        <h1 id="book-title"></h1>
+                        <div class="book-detail-meta">
+                            <span id="book-speaker"></span>
+                            <span id="book-price"></span>
+                            <span id="book-students"></span>
+                            <span id="book-category"></span>
+                        </div>
+                        <button class="listen-btn" onclick="startListening()">開始聽書</button>
+                    </div>
+                </div>
+                <div class="book-detail-content" id="book-content">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 帆書聽書. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBookDetail();
+        });
+
+        function loadBookDetail() {
+            const params = getUrlParams();
+            if (!params.folder || !params.book) {
+                document.getElementById('book-detail').innerHTML = '<p>找不到書籍資訊</p>';
+                return;
+            }
+
+            // 從本地資料獲取書籍資訊
+            const allBooks = {
+                'new-books': fetchBooksData('new-books'),
+                'books': fetchBooksData('books'),
+                'courses': fetchBooksData('courses')
+            };
+
+            allBooks[params.folder].then(books => {
+                const book = books.find(b => b.name === params.book);
+                if (!book) {
+                    document.getElementById('book-detail').innerHTML = '<p>找不到書籍資訊</p>';
+                    return;
+                }
+
+                // 從預設的詳細內容資料中獲取介紹
+                const introContent = getBookIntro(params.folder, params.book);
+                displayBookDetail(book, introContent);
+            }).catch(error => {
+                console.error('Error loading book detail:', error);
+                document.getElementById('book-detail').innerHTML = '<p>載入書籍詳情時發生錯誤</p>';
+            });
+        }
+
+        function getBookIntro(folder, bookName) {
+            const introData = {
+                'new-books': {
+                    '鈍感力': `身為一個住在大都市裡的現代人，我們就像是被裝在貨櫃裡的貨物一樣，一個蘿蔔一個坑，留給自己的位置少得可憐，而且為了不和別人過度碰撞，還必須自己喬好位置，免得跟人強碰的時候，受傷不悅的都是自己。
+
+打開社群網站，排山倒海而來的訊息讓你時而憤怒、時而恐懼、時而悲傷，雖然也有開心的時候，但這些情緒反應都消耗了我們太多的時間和力氣，甚至讓人懷疑：「我是不是得了社交恐懼症？」但為了害怕被排除在朋友圈外，又不得不每天勉強自己，參與這些過度疲乏的情緒勞動……
+
+這樣的日子過久了，你是不是開始覺得，越來越不知道什麼叫做「做自己」，也越來越不知道怎麼樣才能讓自己過得開心快樂。每天每天，我們就被塞在人群的夾縫之中，努力尋找一點屬於自己的喘息空間，但就連這點小小的休息之處，也像是沒買對號票的火車座位一樣，隨時都可能被別人叫起來讓位……
+
+其實，你大可不必如此！因《失樂園》一書而廣受注目的日本文壇大師、寫情聖手渡邊淳一，因為寫作題材頗具爭議性，在名利雙收的同時，他也飽受眾多批評。這樣的他，是怎麼能做到堅持走自己的路，持續在所愛的領域中發光發熱？他用這本《鈍感力》，給出了一個經典的答案。
+
+「一個人謹小慎微，凡事看得過重的自尋煩惱的時代應該宣告終結了。現代人太過敏感反而容易受傷，相對而言，鈍感力反倒是一種不讓自己受傷的力量。」
+
+鈍感力就是一種遲鈍的力量。這並非要求我們必須無視或強行接受所有的負面情緒，而是在提醒我們，不要過分敏感。
+
+在現代充滿壓力的生活當中，無論是期待多失望更多的愛情、動輒得咎的職場、還是暗流湧動的人際關係，種種壓力有時就如同病毒一樣，在不知不覺間侵蝕我們的健康。
+
+文學大師渡邊淳一，用人生大前輩的角度，為我們指出「鈍感力」這道壓力解方。鈍感力就像是潤滑劑一般，幫助我們面對人生中種種的壓力與不如意；同時，具備不為小事動搖的鈍感力，還能幫助我們更有自信的走好人生道路，讓我們成為更好的自己。`,
+                    '父母的語言': '這本書深入探討父母的語言如何影響孩子的成長發展...',
+                    '曾國藩的正面與側面': '透過歷史的角度重新認識曾國藩這位歷史人物...',
+                    '高效休息法': '教你如何在忙碌的生活中找到真正有效的休息方式...'
+                },
+                'books': {
+                    '反脆弱': '在這個充滿不確定性的世界中，如何讓自己變得更強韌...',
+                    '如何讓你愛的人愛上你': '探討愛情中的心理學原理，教你建立真正的親密關係...',
+                    '鈍感力': '身為一個住在大都市裡的現代人，我們就像是被裝在貨櫃裡的貨物一樣...',
+                    '父母的語言': '這本書深入探討父母的語言如何影響孩子的成長發展...',
+                    '曾國藩的正面與側面': '透過歷史的角度重新認識曾國藩這位歷史人物...',
+                    '高效休息法': '教你如何在忙碌的生活中找到真正有效的休息方式...'
+                },
+                'courses': {
+                    '陳重銘的金融股淘金術｜教你挖出不敗績優股': '不敗教主陳重銘老師，將多年來的投資心得與實戰經驗，濃縮成這門精華課程。從基本面分析到選股技巧，一步步教你如何在股市中挖出真正的績優股，建立穩健的投資組合。',
+                    '大俠武林 動態篩選法：7小時股票 × ETF 配息價差雙賺實戰': '大俠武林老師獨創的動態篩選法，教你同時掌握股票與ETF的投資機會。透過系統性的分析方法，讓你在追求配息的同時，也能賺取價差，實現雙重獲利目標。'
+                }
+            };
+
+            return introData[folder]?.[bookName] || '暫無詳細介紹';
+        }
+
+        function displayBookDetail(bookInfo, introText) {
+            document.getElementById('book-image').src = bookInfo.image;
+            document.getElementById('book-image').alt = bookInfo.title || bookInfo.name;
+            document.getElementById('book-title').textContent = bookInfo.title || bookInfo.name;
+            
+            document.getElementById('book-speaker').textContent = bookInfo.speaker ? `講者：${bookInfo.speaker}` : '';
+            document.getElementById('book-price').textContent = bookInfo.price ? `價格：${bookInfo.price}` : '';
+            document.getElementById('book-students').textContent = bookInfo.students ? `學員數：${bookInfo.students}` : '';
+            document.getElementById('book-category').textContent = bookInfo.category ? `分類：${bookInfo.category}` : '';
+
+            const contentElement = document.getElementById('book-content');
+            contentElement.innerHTML = introText.split('\n').map(line => 
+                line.trim() ? `<p>${line.trim()}</p>` : ''
+            ).join('');
+
+            document.title = `${bookInfo.title || bookInfo.name} - 帆書聽書`;
+        }
+
+        function startListening() {
+            alert('開始播放音頻！\n（此為示範功能，實際應用中會連接到音頻播放系統）');
+        }
+    </script>
+</body>
+</html>

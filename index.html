@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帆書聽書 - 優質聽書平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>帆書聽書</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a href="new-books.html" class="nav-link">新書書訊</a>
+                </li>
+                <li class="nav-item">
+                    <a href="featured-books.html" class="nav-link">精選聽書-樊登系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link">線上課程—帆書系列</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#community" class="nav-link">加入社群</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="assets/hero_image.png" alt="帆書聽書推薦">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/hero_image_2.png" alt="精選好書">
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="prev-btn">‹</button>
+                <button class="next-btn">›</button>
+            </div>
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+            </div>
+        </section>
+
+        <section class="new-books-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>新書書訊</h2>
+                    <a href="new-books.html" class="view-more">查看更多</a>
+                </div>
+                <div class="books-grid" id="new-books-grid">
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-books-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精選聽書-樊登系列</h2>
+                    <a href="featured-books.html" class="view-more">查看更多</a>
+                </div>
+                <div class="books-grid" id="featured-books-grid">
+                </div>
+            </div>
+        </section>
+
+        <section class="courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>線上課程—帆書系列</h2>
+                    <a href="courses.html" class="view-more">查看更多</a>
+                </div>
+                <div class="books-grid" id="courses-grid">
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="community-section">
+            <div class="container">
+                <div class="community-content">
+                    <h2>加入社群</h2>
+                    <p>與千萬聽友一起分享閱讀心得，探討人生智慧</p>
+                    <div class="community-buttons">
+                        <button class="btn btn-primary">立即加入</button>
+                        <button class="btn btn-secondary">了解更多</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 帆書聽書. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
