@@ -62,8 +62,14 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
-            const courses = await fetchBooksData('courses');
-            displayBooks('all-courses', courses);
+            try {
+                const courses = await fetchBooksFromFiles('courses');
+                displayBooks('all-courses', courses);
+            } catch (error) {
+                console.error('Error loading from files:', error);
+                const courses = await fetchBooksData('courses');
+                displayBooks('all-courses', courses);
+            }
         });
     </script>
 </body>

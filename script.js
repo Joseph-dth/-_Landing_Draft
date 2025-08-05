@@ -57,6 +57,16 @@ function initMobileMenu() {
 
 async function loadBooks() {
     try {
+        const newBooks = await fetchBooksFromFiles('new-books');
+        const featuredBooks = await fetchBooksFromFiles('books');  
+        const courses = await fetchBooksFromFiles('courses');
+
+        displayBooks('new-books-grid', newBooks.slice(0, 4));
+        displayBooks('featured-books-grid', featuredBooks.slice(0, 4));
+        displayBooks('courses-grid', courses.slice(0, 4));
+    } catch (error) {
+        console.error('Error loading books:', error);
+        // 如果無法從檔案載入，使用靜態資料作為後備
         const newBooks = await fetchBooksData('new-books');
         const featuredBooks = await fetchBooksData('books');
         const courses = await fetchBooksData('courses');
@@ -64,8 +74,6 @@ async function loadBooks() {
         displayBooks('new-books-grid', newBooks.slice(0, 4));
         displayBooks('featured-books-grid', featuredBooks.slice(0, 4));
         displayBooks('courses-grid', courses.slice(0, 4));
-    } catch (error) {
-        console.error('Error loading books:', error);
     }
 }
 
@@ -188,6 +196,32 @@ function fetchBooksData(folder) {
     };
 
     return Promise.resolve(booksData[folder] || []);
+}
+
+async function fetchBooksFromFiles(folder) {
+    const books = [];
+    const bookFolders = {
+        'new-books': ['曾國藩的正面與側面', '父母的語言', '鈍感力', '高效休息法'],
+        'books': ['反脆弱', '如何讓你愛的人愛上你', '曾國藩的正面與側面', '父母的語言', '鈍感力', '高效休息法'],
+        'courses': ['陳重銘的金融股淘金術｜教你挖出不敗績優股', '大俠武林 動態篩選法：7小時股票 × ETF 配息價差雙賺實戰', 
+                   '陳重銘的金融股淘金術｜教你挖出不敗績優股 copy', '陳重銘的金融股淘金術｜教你挖出不敗績優股 copy 2', 
+                   '陳重銘的金融股淘金術｜教你挖出不敗績優股 copy 3']
+    };
+
+    for (const bookName of bookFolders[folder] || []) {
+        try {
+            const response = await fetch(`${folder}/${encodeURIComponent(bookName)}/info.txt`);
+            if (response.ok) {
+                const infoText = await response.text();
+                const bookInfo = parseBookInfo(infoText, bookName, folder);
+                books.push(bookInfo);
+            }
+        } catch (error) {
+            console.log(`Could not load ${bookName} from files`);
+        }
+    }
+
+    return books;
 }
 
 function parseBookInfo(infoText, bookName, folder) {
