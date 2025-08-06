@@ -67,9 +67,4 @@ function initCommunityCarousel() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    initCarousel();
-    initMobileMenu();
-    loadHomepageBooks();
-    loadCommunityEvents();
-});
+// DOMContentLoaded handling moved to inline script in HTML

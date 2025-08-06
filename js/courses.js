@@ -7,7 +7,4 @@ async function loadAllCourses() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    loadAllCourses();
-});
+// DOMContentLoaded handling moved to inline script in HTML

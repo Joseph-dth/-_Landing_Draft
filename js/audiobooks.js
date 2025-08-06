@@ -66,7 +66,4 @@ function filterBooksByCategory(category) {
     displayBooks('all-audiobooks', filteredBooks);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    loadAllAudiobooks();
-});
+// DOMContentLoaded handling moved to inline script in HTML

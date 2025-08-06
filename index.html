@@ -7,35 +7,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>帆書聽書</h2>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">首頁</a>
-                </li>
-                <li class="nav-item">
-                    <a href="books.html" class="nav-link">書籍</a>
-                </li>
-                <li class="nav-item">
-                    <a href="audiobooks.html" class="nav-link">聽書</a>
-                </li>
-                <li class="nav-item">
-                    <a href="courses.html" class="nav-link">線上課程—帆書系列</a>
-                </li>
-                <li class="nav-item">
-                    <a href="community.html" class="nav-link">加入社群</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
 
     <main>
         <section class="hero-carousel">
@@ -108,15 +79,24 @@
 
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 帆書聽書. All rights reserved.</p>
-        </div>
-    </footer>
-
+    <script src="js/utils_components.js"></script>
     <script src="js/utils_mobile_menu.js"></script>
     <script src="js/utils_carousel.js"></script>
     <script src="js/utils_books.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        // Initialize components first, then run page-specific scripts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize components first
+            ComponentUtils.initComponents('home');
+            
+            // Then run page-specific functionality
+            setTimeout(() => {
+                initCarousel();
+                loadHomepageBooks();
+                loadCommunityEvents();
+            }, 10);
+        });
+    </script>
 </body>
 </html>

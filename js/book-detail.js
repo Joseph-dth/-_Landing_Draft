@@ -119,7 +119,4 @@ function startListening() {
     alert('開始播放音頻！\n（此為示範功能，實際應用中會連接到音頻播放系統）');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    loadBookDetail();
-});
+// DOMContentLoaded handling moved to inline script in HTML
