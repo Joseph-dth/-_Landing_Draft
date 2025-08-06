@@ -13,10 +13,10 @@ function createNavigation(activePage = '') {
                         <a href="index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a href="books.html" class="nav-link ${activePage === 'books' ? 'active' : ''}">書籍</a>
+                        <a href="audiobooks.html" class="nav-link ${activePage === 'audiobooks' ? 'active' : ''}">精選聽書—樊登系列</a>
                     </li>
                     <li class="nav-item">
-                        <a href="audiobooks.html" class="nav-link ${activePage === 'audiobooks' ? 'active' : ''}">聽書</a>
+                        <a href="books.html" class="nav-link ${activePage === 'books' ? 'active' : ''}">新書書訊</a>
                     </li>
                     <li class="nav-item">
                         <a href="courses.html" class="nav-link ${activePage === 'courses' ? 'active' : ''}">線上課程—帆書系列</a>
