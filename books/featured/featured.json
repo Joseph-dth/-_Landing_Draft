@@ -1,20 +1,11 @@
 [
     {
-        "name": "鈍感力",
-        "title": "鈍感力",
+        "name": "曾國藩的正面與側面",
+        "title": "曾國藩的正面與側面",
         "speaker": "樊登",
         "price": "99 NTD",
-        "category": "心靈",
-        "image": "books/featured/鈍感力/image.png",
-        "folder": "books"
-    },
-    {
-        "name": "如何讓你愛的人愛上你",
-        "title": "如何讓你愛的人愛上你",
-        "speaker": "樊登",
-        "price": "99 NTD",
-        "category": "兩性關係",
-        "image": "books/featured/如何讓你愛的人愛上你/image.png",
+        "category": "歷史人物",
+        "image": "books/featured/曾國藩的正面與側面/image.png",
         "folder": "books"
     },
     {
@@ -24,6 +15,15 @@
         "price": "99 NTD",
         "category": "親子教育",
         "image": "books/featured/父母的語言/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "鈍感力",
+        "title": "鈍感力",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "books/featured/鈍感力/image.png",
         "folder": "books"
     },
     {

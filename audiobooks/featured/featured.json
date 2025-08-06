@@ -1,0 +1,38 @@
+[
+    {
+        "name": "鈍感力",
+        "title": "鈍感力",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/featured/鈍感力/image.png",
+        "folder": "audiobooks"
+    },
+    {
+        "name": "如何讓你愛的人愛上你",
+        "title": "如何讓你愛的人愛上你",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "兩性關係",
+        "image": "audiobooks/featured/如何讓你愛的人愛上你/image.png",
+        "folder": "audiobooks"
+    },
+    {
+        "name": "父母的語言",
+        "title": "父母的語言",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "親子教育",
+        "image": "audiobooks/featured/父母的語言/image.png",
+        "folder": "audiobooks"
+    },
+    {
+        "name": "高效休息法",
+        "title": "高效休息法",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "自我提升",
+        "image": "audiobooks/featured/高效休息法/image.png",
+        "folder": "audiobooks"
+    }
+]
