@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>帆書聽書 - 優質聽書平台</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar">
@@ -41,10 +41,10 @@
         <section class="hero-carousel">
             <div class="carousel-container">
                 <div class="carousel-slide active">
-                    <img src="assets/hero_image.png" alt="帆書聽書推薦">
+                    <img src="images/hero_image.png" alt="帆書聽書推薦">
                 </div>
                 <div class="carousel-slide">
-                    <img src="assets/hero_image_2.png" alt="精選好書">
+                    <img src="images/hero_image_2.png" alt="精選好書">
                 </div>
             </div>
             <div class="carousel-controls">
@@ -57,16 +57,7 @@
             </div>
         </section>
 
-        <section class="new-books-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>新書書訊</h2>
-                    <a href="new-books.html" class="view-more">查看更多</a>
-                </div>
-                <div class="books-grid" id="new-books-grid">
-                </div>
-            </div>
-        </section>
+        
 
         <section class="featured-books-section">
             <div class="container">
@@ -86,6 +77,17 @@
                     <a href="courses.html" class="view-more">查看更多</a>
                 </div>
                 <div class="books-grid" id="courses-grid">
+                </div>
+            </div>
+        </section>
+
+        <section class="new-books-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>新書書訊</h2>
+                    <a href="new-books.html" class="view-more">查看更多</a>
+                </div>
+                <div class="books-grid" id="new-books-grid">
                 </div>
             </div>
         </section>
@@ -110,6 +112,9 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/utils_mobile_menu.js"></script>
+    <script src="js/utils_carousel.js"></script>
+    <script src="js/utils_books.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -76,7 +76,7 @@ body {
 
 .bar {
     width: 25px;
-    height: 3px;
+    height: 5vh;
     background-color: var(--text-dark);
     margin: 3px 0;
     transition: 0.3s;
@@ -84,7 +84,7 @@ body {
 
 .hero-carousel {
     position: relative;
-    height: 500px;
+    height: 90vh;
     overflow: hidden;
     background-color: var(--light-color);
 }

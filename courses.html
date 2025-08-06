@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上課程—帆書系列 - 帆書聽書</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar">
@@ -59,18 +59,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                const courses = await fetchBooksFromFiles('courses');
-                displayBooks('all-courses', courses);
-            } catch (error) {
-                console.error('Error loading from files:', error);
-                const courses = await fetchBooksData('courses');
-                displayBooks('all-courses', courses);
-            }
-        });
-    </script>
+    <script src="js/utils_mobile_menu.js"></script>
+    <script src="js/utils_books.js"></script>
+    <script src="js/courses.js"></script>
 </body>
 </html>

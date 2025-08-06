@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新書書訊 - 帆書聽書</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar">
@@ -59,18 +59,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                const newBooks = await fetchBooksFromFiles('new-books');
-                displayBooks('all-new-books', newBooks);
-            } catch (error) {
-                console.error('Error loading from files:', error);
-                const newBooks = await fetchBooksData('new-books');
-                displayBooks('all-new-books', newBooks);
-            }
-        });
-    </script>
+    <script src="js/utils_mobile_menu.js"></script>
+    <script src="js/utils_books.js"></script>
+    <script src="js/new-books.js"></script>
 </body>
 </html>

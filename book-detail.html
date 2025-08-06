@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>書籍詳情 - 帆書聽書</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar">
@@ -65,73 +65,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadBookDetail();
-        });
-
-        async function loadBookDetail() {
-            const params = getUrlParams();
-            if (!params.folder || !params.book) {
-                document.getElementById('book-detail').innerHTML = '<p>找不到書籍資訊</p>';
-                return;
-            }
-
-            try {
-                // 從本地資料獲取書籍基本資訊
-                const books = await fetchBooksData(params.folder);
-                const book = books.find(b => b.name === params.book);
-                if (!book) {
-                    document.getElementById('book-detail').innerHTML = '<p>找不到書籍資訊</p>';
-                    return;
-                }
-
-                // 直接從 intro.txt 檔案載入介紹內容
-                const introResponse = await fetch(`${params.folder}/${encodeURIComponent(params.book)}/intro.txt`);
-                let introContent = '暫無詳細介紹';
-                
-                if (introResponse.ok) {
-                    introContent = await introResponse.text();
-                } else {
-                    console.warn(`Could not load intro.txt for ${params.book}`);
-                }
-
-                displayBookDetail(book, introContent);
-            } catch (error) {
-                console.error('Error loading book detail:', error);
-                document.getElementById('book-detail').innerHTML = '<p>載入書籍詳情時發生錯誤</p>';
-            }
-        }
-
-
-        function displayBookDetail(bookInfo, introText) {
-            document.getElementById('book-image').src = bookInfo.image;
-            document.getElementById('book-image').alt = bookInfo.title || bookInfo.name;
-            document.getElementById('book-title').textContent = bookInfo.title || bookInfo.name;
-            
-            document.getElementById('book-speaker').textContent = bookInfo.speaker ? `講者：${bookInfo.speaker}` : '';
-            document.getElementById('book-price').textContent = bookInfo.price ? `價格：${bookInfo.price}` : '';
-            document.getElementById('book-students').textContent = bookInfo.students ? `學員數：${bookInfo.students}` : '';
-            document.getElementById('book-category').textContent = bookInfo.category ? `分類：${bookInfo.category}` : '';
-
-            const contentElement = document.getElementById('book-content');
-            if (introText) {
-                // 處理換行符號，將每個段落轉換為 <p> 標籤
-                const paragraphs = introText.split('\n\n').filter(para => para.trim());
-                contentElement.innerHTML = paragraphs.map(para => 
-                    `<p>${para.trim().replace(/\n/g, '<br>')}</p>`
-                ).join('');
-            } else {
-                contentElement.innerHTML = '<p>暫無詳細介紹</p>';
-            }
-
-            document.title = `${bookInfo.title || bookInfo.name} - 帆書聽書`;
-        }
-
-        function startListening() {
-            alert('開始播放音頻！\n（此為示範功能，實際應用中會連接到音頻播放系統）');
-        }
-    </script>
+    <script src="js/utils_mobile_menu.js"></script>
+    <script src="js/utils_books.js"></script>
+    <script src="js/book-detail.js"></script>
 </body>
 </html>

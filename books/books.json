@@ -1,0 +1,56 @@
+[
+    {
+        "name": "反脆弱",
+        "title": "反脆弱",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "books/反脆弱/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "如何讓你愛的人愛上你",
+        "title": "如何讓你愛的人愛上你",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "兩性關係",
+        "image": "books/如何讓你愛的人愛上你/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "曾國藩的正面與側面",
+        "title": "曾國藩的正面與側面",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "歷史人物",
+        "image": "books/曾國藩的正面與側面/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "父母的語言",
+        "title": "父母的語言",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "親子教育",
+        "image": "books/父母的語言/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "鈍感力",
+        "title": "鈍感力",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "books/鈍感力/image.png",
+        "folder": "books"
+    },
+    {
+        "name": "高效休息法",
+        "title": "高效休息法",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "自我提升",
+        "image": "books/高效休息法/image.png",
+        "folder": "books"
+    }
+]
