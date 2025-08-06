@@ -1,6 +1,14 @@
 async function fetchBooksFromJSON(folder, isFeatured = false) {
     try {
-        const jsonPath = isFeatured ? `${folder}/featured/featured.json` : `${folder}/books.json`;
+        let jsonPath;
+        if (isFeatured) {
+            jsonPath = `${folder}/featured.json`;
+        } else {
+            // 根據資料夾名稱決定 JSON 檔名
+            const jsonFileName = folder === 'courses' ? 'courses.json' : 'books.json';
+            jsonPath = `${folder}/${jsonFileName}`;
+        }
+        
         const response = await fetch(jsonPath);
         if (response.ok) {
             const booksData = await response.json();
@@ -61,6 +69,23 @@ function displayBooks(containerId, books) {
                 ${book.price ? `<div class="book-price">${book.price}</div>` : ''}
                 ${book.students ? `<div class="book-price">學員數：${book.students}</div>` : ''}
                 ${book.category ? `<div class="book-category">${book.category}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+function displayCourses(containerId, courses) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = courses.map(course => `
+        <div class="course-card" onclick="openBookDetail('${course.folder}', '${course.name}')">
+            <img src="${course.image}" alt="${course.title}" class="course-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDIwMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTgwIiBmaWxsPSIjREREQkRBIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM3NjcwNjQiIGZvbnQtc2l6ZT0iMTIiPuabuOeoi+WcluWDuDwvdGV4dD4KPC9zdmc+'">
+            <div class="course-info">
+                <div class="course-title">${course.title || course.name}</div>
+                <div class="course-speaker">講師：${course.speaker || ''}</div>
+                ${course.price ? `<div class="course-price">${course.price}</div>` : ''}
+                ${course.category ? `<div class="course-category">${course.category}</div>` : ''}
             </div>
         </div>
     `).join('');

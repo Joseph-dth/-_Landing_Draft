@@ -1,7 +1,7 @@
 async function loadAllCourses() {
     try {
         const courses = await fetchAllBooks('courses');
-        displayBooks('all-courses', courses);
+        displayCourses('all-courses', courses);
     } catch (error) {
         console.error('Error loading courses:', error);
     }

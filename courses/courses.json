@@ -1,0 +1,32 @@
+[
+    {
+        "name": "高效閱讀必修課",
+        "title": "高效閱讀必修課",
+        "speaker": "樊登",
+        "price": "412 NTD",
+        "category": "個人成長",
+        "image": "courses/0001_高效閱讀必修課/image.png",
+        "folder": "courses",
+        "folderName": "0001_高效閱讀必修課"
+    },
+    {
+        "name": "樊登講資治通鑑",
+        "title": "樊登講資治通鑑",
+        "speaker": "樊登",
+        "price": "995 NTD",
+        "category": "人文歷史",
+        "image": "courses/0002_樊登講資治通鑑/image.png",
+        "folder": "courses",
+        "folderName": "0002_樊登講資治通鑑"
+    },
+    {
+        "name": "神經科醫生的高效減壓法",
+        "title": "神經科醫生的高效減壓法",
+        "speaker": "金鉑",
+        "price": "408 NTD",
+        "category": "健康生活",
+        "image": "courses/0003_神經科醫生的高效減壓法/image.png",
+        "folder": "courses",
+        "folderName": "0003_神經科醫生的高效減壓法"
+    }
+]
