@@ -1,56 +1,302 @@
 [
     {
-        "name": "反脆弱",
-        "title": "反脆弱",
-        "speaker": "樊登",
-        "price": "99 NTD",
-        "category": "商業財經",
-        "image": "audiobooks/反脆弱/image.png",
-        "folder": "audiobooks"
-    },
-    {
         "name": "如何讓你愛的人愛上你",
         "title": "如何讓你愛的人愛上你",
         "speaker": "樊登",
         "price": "99 NTD",
-        "category": "兩性關係",
-        "image": "audiobooks/如何讓你愛的人愛上你/image.png",
-        "folder": "audiobooks"
+        "category": "個人成長",
+        "image": "audiobooks/0001_如何讓你愛的人愛上你/image.png",
+        "folder": "audiobooks",
+        "folderName": "0001_如何讓你愛的人愛上你"
     },
     {
-        "name": "曾國藩的正面與側面",
-        "title": "曾國藩的正面與側面",
+        "name": "原子習慣",
+        "title": "原子習慣",
         "speaker": "樊登",
         "price": "99 NTD",
-        "category": "歷史人物",
-        "image": "audiobooks/曾國藩的正面與側面/image.png",
-        "folder": "audiobooks"
-    },
-    {
-        "name": "父母的語言",
-        "title": "父母的語言",
-        "speaker": "樊登",
-        "price": "99 NTD",
-        "category": "親子教育",
-        "image": "audiobooks/父母的語言/image.png",
-        "folder": "audiobooks"
-    },
-    {
-        "name": "鈍感力",
-        "title": "鈍感力",
-        "speaker": "樊登",
-        "price": "99 NTD",
-        "category": "心靈",
-        "image": "audiobooks/鈍感力/image.png",
-        "folder": "audiobooks"
+        "category": "個人成長",
+        "image": "audiobooks/0002_原子習慣/image.png",
+        "folder": "audiobooks",
+        "folderName": "0002_原子習慣"
     },
     {
         "name": "高效休息法",
         "title": "高效休息法",
         "speaker": "樊登",
         "price": "99 NTD",
-        "category": "自我提升",
-        "image": "audiobooks/高效休息法/image.png",
-        "folder": "audiobooks"
+        "category": "健康生活",
+        "image": "audiobooks/0003_高效休息法/image.png",
+        "folder": "audiobooks",
+        "folderName": "0003_高效休息法"
+    },
+    {
+        "name": "運動改造大腦",
+        "title": "運動改造大腦",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0004_運動改造大腦/image.png",
+        "folder": "audiobooks",
+        "folderName": "0004_運動改造大腦"
+    },
+    {
+        "name": "《反脆弱》 by 納西姆·尼可拉斯·塔勒布",
+        "title": "《反脆弱》 by 納西姆·尼可拉斯·塔勒布",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0005_反脆弱/image.png",
+        "folder": "audiobooks",
+        "folderName": "0005_反脆弱"
+    },
+    {
+        "name": "快思慢想",
+        "title": "快思慢想",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0006_快思慢想/image.png",
+        "folder": "audiobooks",
+        "folderName": "0006_快思慢想"
+    },
+    {
+        "name": "活出工作的意義",
+        "title": "活出工作的意義",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0007_活出工作的意義/image.png",
+        "folder": "audiobooks",
+        "folderName": "0007_活出工作的意義"
+    },
+    {
+        "name": "斯坦福高效睡眠法",
+        "title": "斯坦福高效睡眠法",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0008_斯坦福高效睡眠法/image.png",
+        "folder": "audiobooks",
+        "folderName": "0008_斯坦福高效睡眠法"
+    },
+    {
+        "name": "正念飲食（原《學會吃飯》）",
+        "title": "正念飲食（原《學會吃飯》）",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0009_正念飲食/image.png",
+        "folder": "audiobooks",
+        "folderName": "0009_正念飲食"
+    },
+    {
+        "name": "窮查理的普通常識",
+        "title": "窮查理的普通常識",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0010_窮查理的普通常識/image.png",
+        "folder": "audiobooks",
+        "folderName": "0010_窮查理的普通常識"
+    },
+    {
+        "name": "納瓦爾寶典",
+        "title": "納瓦爾寶典",
+        "speaker": "商業財經",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0011_納瓦爾寶典/image.png",
+        "folder": "audiobooks",
+        "folderName": "0011_納瓦爾寶典"
+    },
+    {
+        "name": "《鈍感力》- 渡邊淳一",
+        "title": "《鈍感力》- 渡邊淳一",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0012_鈍感力/image.png",
+        "folder": "audiobooks",
+        "folderName": "0012_鈍感力"
+    },
+    {
+        "name": "巴菲特之道",
+        "title": "巴菲特之道",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0013_巴菲特之道/image.png",
+        "folder": "audiobooks",
+        "folderName": "0013_巴菲特之道"
+    },
+    {
+        "name": "中年覺醒",
+        "title": "中年覺醒",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0014_中年覺醒/image.png",
+        "folder": "audiobooks",
+        "folderName": "0014_中年覺醒"
+    },
+    {
+        "name": "一如既往",
+        "title": "一如既往",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0015_一如既往/image.png",
+        "folder": "audiobooks",
+        "folderName": "0015_一如既往"
+    },
+    {
+        "name": "癌症密碼",
+        "title": "癌症密碼",
+        "speaker": "樊登、金鉑",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0016_癌症密碼/image.png",
+        "folder": "audiobooks",
+        "folderName": "0016_癌症密碼"
+    },
+    {
+        "name": "《被討厭的勇氣》 by 岸見一郎、古賀史健",
+        "title": "《被討厭的勇氣》 by 岸見一郎、古賀史健",
+        "speaker": "錢婧",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0017_被討厭的勇氣/image.png",
+        "folder": "audiobooks",
+        "folderName": "0017_被討厭的勇氣"
+    },
+    {
+        "name": "蛤蟆先生去看心理師",
+        "title": "蛤蟆先生去看心理師",
+        "speaker": "李蕾",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0018_蛤蟆先生去看心理師/image.png",
+        "folder": "audiobooks",
+        "folderName": "0018_蛤蟆先生去看心理師"
+    },
+    {
+        "name": "我可能錯了",
+        "title": "我可能錯了",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0019_我可能錯了/image.png",
+        "folder": "audiobooks",
+        "folderName": "0019_我可能錯了"
+    },
+    {
+        "name": "超越巴菲特的伯克希爾",
+        "title": "超越巴菲特的伯克希爾",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0020_超越巴菲特的伯克希爾/image.png",
+        "folder": "audiobooks",
+        "folderName": "0020_超越巴菲特的伯克希爾"
+    },
+    {
+        "name": "人生只有一件事",
+        "title": "人生只有一件事",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0021_人生只有一件事/image.png",
+        "folder": "audiobooks",
+        "folderName": "0021_人生只有一件事"
+    },
+    {
+        "name": "活出心花怒放的人生",
+        "title": "活出心花怒放的人生",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0022_活出心花怒放的人生/image.png",
+        "folder": "audiobooks",
+        "folderName": "0022_活出心花怒放的人生"
+    },
+    {
+        "name": "掃除道",
+        "title": "掃除道",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0023_掃除道/image.png",
+        "folder": "audiobooks",
+        "folderName": "0023_掃除道"
+    },
+    {
+        "name": "父母的語言",
+        "title": "父母的語言",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "親子家庭",
+        "image": "audiobooks/0024_父母的語言/image.png",
+        "folder": "audiobooks",
+        "folderName": "0024_父母的語言"
+    },
+    {
+        "name": "你好，小孩",
+        "title": "你好，小孩",
+        "speaker": "樊登、李小萌",
+        "price": "99 NTD",
+        "category": "親子家庭",
+        "image": "audiobooks/0025_你好小孩/image.png",
+        "folder": "audiobooks",
+        "folderName": "0025_你好小孩"
+    },
+    {
+        "name": "考試腦科學",
+        "title": "考試腦科學",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0026_考試腦科學/image.png",
+        "folder": "audiobooks",
+        "folderName": "0026_考試腦科學"
+    },
+    {
+        "name": "非暴力沟通",
+        "title": "非暴力沟通",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0027_非暴力溝通/image.png",
+        "folder": "audiobooks",
+        "folderName": "0027_非暴力溝通"
+    },
+    {
+        "name": "內在動機：自主掌控人生的力量",
+        "title": "內在動機：自主掌控人生的力量",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0028_內在動機/image.png",
+        "folder": "audiobooks",
+        "folderName": "0028_內在動機"
+    },
+    {
+        "name": "強大心理韌性的逆商思維",
+        "title": "強大心理韌性的逆商思維",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0029_強大心理韌性的逆商思維/image.png",
+        "folder": "audiobooks",
+        "folderName": "0029_強大心理韌性的逆商思維"
+    },
+    {
+        "name": "曾国藩的正面与侧面",
+        "title": "曾国藩的正面与侧面",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "人文歷史",
+        "image": "audiobooks/0030_曾國藩的正面與側面/image.png",
+        "folder": "audiobooks",
+        "folderName": "0030_曾國藩的正面與側面"
     }
 ]

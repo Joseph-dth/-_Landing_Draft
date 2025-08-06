@@ -6,7 +6,8 @@
       "Bash(rmdir:*)",
       "Bash(rm:*)",
       "Bash(find:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

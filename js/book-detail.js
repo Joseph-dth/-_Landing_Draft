@@ -25,10 +25,17 @@ async function loadBookDetail() {
 
     // 嘗試載入intro.txt
     if (bookInfo) {
-        const pathsToTry = [
-            `${params.folder}/featured/${encodeURIComponent(params.book)}`,
-            `${params.folder}/${encodeURIComponent(params.book)}`
-        ];
+        const pathsToTry = [];
+        
+        // 如果有 folderName 欄位，使用它
+        if (bookInfo.folderName) {
+            pathsToTry.push(`${params.folder}/${bookInfo.folderName}`);
+            pathsToTry.push(`${params.folder}/featured/${bookInfo.folderName}`);
+        } else {
+            // 向後相容性：使用舊的方式
+            pathsToTry.push(`${params.folder}/featured/${encodeURIComponent(params.book)}`);
+            pathsToTry.push(`${params.folder}/${encodeURIComponent(params.book)}`);
+        }
 
         for (const basePath of pathsToTry) {
             try {
