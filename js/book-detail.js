@@ -5,50 +5,41 @@ async function loadBookDetail() {
         return;
     }
 
-    // 先嘗試從featured資料夾載入，如果失敗再嘗試主資料夾
-    const pathsToTry = [
-        `${params.folder}/featured/${encodeURIComponent(params.book)}`,
-        `${params.folder}/${encodeURIComponent(params.book)}`
-    ];
-
+    // 從JSON獲取書籍資訊
     let bookInfo = null;
     let introText = '暫無詳細介紹';
 
-    for (const basePath of pathsToTry) {
-        try {
-            const infoResponse = await fetch(`${basePath}/info.txt`);
-            const introResponse = await fetch(`${basePath}/intro.txt`);
-            
-            if (infoResponse.ok) {
-                const infoText = await infoResponse.text();
-                bookInfo = parseBookInfo(infoText, params.book, params.folder);
-                
-                // 更新圖片路徑
-                bookInfo.image = `${basePath}/image.png`;
-                
-                if (introResponse.ok) {
-                    introText = await introResponse.text();
-                }
-                break; // 成功載入，跳出迴圈
-            }
-        } catch (error) {
-            console.log(`Failed to load from ${basePath}:`, error);
+    try {
+        // 先嘗試從featured JSON載入
+        const featuredBooks = await fetchFeaturedBooks(params.folder);
+        bookInfo = featuredBooks.find(b => b.name === params.book);
+        
+        if (!bookInfo) {
+            // 如果featured中沒有，再從主JSON載入
+            const allBooks = await fetchAllBooks(params.folder);
+            bookInfo = allBooks.find(b => b.name === params.book);
         }
+    } catch (error) {
+        console.error('Error loading books:', error);
     }
 
-    // 如果還是無法載入，嘗試從JSON獲取書籍資訊
-    if (!bookInfo) {
-        try {
-            const fallbackBooks = await fetchAllBooks(params.folder);
-            bookInfo = fallbackBooks.find(b => b.name === params.book);
-            
-            if (!bookInfo) {
-                // 也嘗試從featured JSON載入
-                const featuredBooks = await fetchFeaturedBooks(params.folder);
-                bookInfo = featuredBooks.find(b => b.name === params.book);
+    // 嘗試載入intro.txt
+    if (bookInfo) {
+        const pathsToTry = [
+            `${params.folder}/featured/${encodeURIComponent(params.book)}`,
+            `${params.folder}/${encodeURIComponent(params.book)}`
+        ];
+
+        for (const basePath of pathsToTry) {
+            try {
+                const introResponse = await fetch(`${basePath}/intro.txt`);
+                if (introResponse.ok) {
+                    introText = await introResponse.text();
+                    break;
+                }
+            } catch (error) {
+                console.log(`Failed to load intro from ${basePath}:`, error);
             }
-        } catch (error) {
-            console.error('Error loading fallback books:', error);
         }
     }
 

@@ -20,6 +20,76 @@ body {
     background-color: var(--white);
 }
 
+/* 分類過濾器樣式 */
+.category-filter-section {
+    margin-bottom: 2rem;
+}
+
+.desktop-filter {
+    display: block;
+}
+
+.mobile-filter {
+    display: none;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.category-btn {
+    background-color: var(--white);
+    color: var(--secondary-color);
+    border: 2px solid var(--light-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.category-btn:hover {
+    background-color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+#category-select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 8px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    font-family: inherit;
+}
+
+#category-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .desktop-filter {
+        display: none;
+    }
+    
+    .mobile-filter {
+        display: block;
+    }
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -194,7 +264,7 @@ body {
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     padding-bottom: 3rem;
 }
@@ -206,6 +276,9 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .book-card:hover {
@@ -221,6 +294,9 @@ body {
 
 .book-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .book-title {
@@ -241,6 +317,7 @@ body {
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+    margin-top: auto;
 }
 
 .book-category {
@@ -250,6 +327,7 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     display: inline-block;
+    align-self: flex-start;
 }
 
 .new-books-section,

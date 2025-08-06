@@ -23,29 +23,7 @@ async function fetchAllBooks(folder) {
 }
 
 async function fetchBooksFromFiles(folder, isFeatured = false) {
-    const books = [];
-    const jsonBooks = await fetchBooksFromJSON(folder, isFeatured);
-    
-    if (jsonBooks.length > 0) {
-        for (const book of jsonBooks) {
-            try {
-                const basePath = isFeatured ? `${folder}/featured` : folder;
-                const response = await fetch(`${basePath}/${encodeURIComponent(book.name)}/info.txt`);
-                if (response.ok) {
-                    const infoText = await response.text();
-                    const bookInfo = parseBookInfo(infoText, book.name, folder);
-                    books.push(bookInfo);
-                } else {
-                    books.push(book);
-                }
-            } catch (error) {
-                console.log(`Could not load ${book.name} from files, using JSON data`);
-                books.push(book);
-            }
-        }
-    }
-
-    return books;
+    return await fetchBooksFromJSON(folder, isFeatured);
 }
 
 function parseBookInfo(infoText, bookName, folder) {
