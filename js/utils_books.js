@@ -92,7 +92,9 @@ function displayCourses(containerId, courses) {
 }
 
 function openBookDetail(folder, bookName) {
-    window.location.href = `book-detail.html?folder=${encodeURIComponent(folder)}&book=${encodeURIComponent(bookName)}`;
+    // 根據資料夾類型決定使用哪個詳細頁面
+    const detailPage = folder === 'courses' ? 'course-detail.html' : 'book-detail.html';
+    window.location.href = `${detailPage}?folder=${encodeURIComponent(folder)}&book=${encodeURIComponent(bookName)}`;
 }
 
 function getUrlParams() {

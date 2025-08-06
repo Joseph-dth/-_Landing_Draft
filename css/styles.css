@@ -18,6 +18,9 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* 分類過濾器樣式 */
@@ -116,8 +119,12 @@ body {
 
 .nav-logo h2 {
     color: var(--primary-color);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
+}
+
+.nav-logo h2 .x-gray {
+    color: var(--text-light);
 }
 
 .nav-menu {
@@ -354,6 +361,7 @@ body {
 .featured-books-section,
 .courses-section {
     background-color: var(--white);
+    padding-bottom: 2rem;
 }
 
 .featured-books-section {
@@ -506,11 +514,21 @@ body {
     transform: scale(1.1);
 }
 
+/* Hide mobile view-more buttons on desktop */
+.mobile-view-more {
+    display: none;
+}
+
+main {
+    flex: 1;
+}
+
 .footer {
     background-color: var(--secondary-color);
     color: white;
     text-align: center;
     padding: 2rem 0;
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
@@ -547,6 +565,32 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Hide view-more button in header on mobile */
+    .section-header .view-more {
+        display: none;
+    }
+
+    /* Show mobile view-more buttons on mobile */
+    .mobile-view-more {
+        display: block;
+        text-align: center;
+        margin: 2rem auto 2rem auto;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        width: fit-content;
+    }
+
+    .mobile-view-more:hover {
+        background-color: var(--primary-color);
+        color: white;
     }
 
     .books-grid {
@@ -671,17 +715,47 @@ body {
         font-size: 1rem;
     }
 
+    .book-detail {
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
     .book-detail-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .book-detail-image {
-        width: 250px;
-        height: 330px;
+        min-width: unset;
+        max-width: unset;
+        width: 280px;
+        height: 370px;
     }
+
+    .book-detail-info {
+        min-height: unset;
+    }
+    .book-detail-info h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .book-detail-meta {
+        gap: 0.3rem;
+        margin-bottom: 1.5rem;
+    }
+    .book-detail-meta span {
+        font-size: 1rem;
+    }
+    .book-detail-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
 }
+
 
 /* Community Page Styles */
 .community-hero {

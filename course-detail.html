@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程詳情 - 帆書聽書</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/course-detail.css">
+</head>
+<body>
+
+    <main>
+        <div class="container">
+            <div class="course-detail" id="course-detail">
+                <div class="course-detail-wrapper">
+                    <div class="course-detail-header">
+                        <img id="course-image" src="" alt="" class="course-detail-image">
+                        <div class="course-detail-info">
+                            <h1 id="course-title"></h1>
+                            <div class="course-detail-meta">
+                                <span id="course-speaker"></span>
+                                <span id="course-price"></span>
+                                <span id="course-students"></span>
+                                <span id="course-category"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="listen-btn" onclick="startListening()">開始聽書</button>
+                <div class="course-detail-content" id="course-content">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/utils_components.js"></script>
+    <script src="js/utils_mobile_menu.js"></script>
+    <script src="js/utils_books.js"></script>
+    <script src="js/course-detail.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ComponentUtils.initComponents();
+            setTimeout(() => {
+                loadCourseDetail();
+            }, 10);
+        });
+    </script>
+</body>
+</html>

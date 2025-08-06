@@ -1,0 +1,141 @@
+/* Course Detail Page Styles */
+.course-detail {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.course-detail-wrapper {
+    height: 35vh;
+    margin-bottom: 2rem;
+}
+
+.course-detail-header {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+}
+
+.course-detail-image {
+    flex: 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.course-detail-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    padding: 0;
+}
+
+.course-detail-info h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.course-detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 0;
+}
+
+.course-detail-meta span {
+    font-size: 1.1rem;
+}
+
+.course-detail-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+/* Course-specific listen button */
+.course-detail .listen-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 4rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto;
+    min-width: 300px;
+    text-align: center;
+}
+
+.course-detail .listen-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive for course detail */
+@media (max-width: 768px) {
+    .course-detail {
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+    
+    .course-detail-wrapper {
+        height: auto;
+    }
+    
+    .course-detail-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        height: auto;
+    }
+
+    .course-detail-image {
+        width: 280px;
+        height: 200px;
+        flex: none;
+    }
+
+    .course-detail-info {
+        height: auto;
+    }
+    
+    .course-detail-info h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .course-detail-meta {
+        gap: 0.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .course-detail-meta span {
+        font-size: 1rem;
+    }
+    
+    .course-detail-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .course-detail .listen-btn {
+        min-width: 250px;
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        margin: 1.5rem auto;
+    }
+}

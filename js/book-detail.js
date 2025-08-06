@@ -61,6 +61,7 @@ function displayBookDetail(book, intro) {
     if (bookImage) {
         bookImage.src = book.image;
         bookImage.alt = book.title || book.name;
+        
         bookImage.onerror = function() {
             this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDIwMCAyNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjREREQkRBIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNzY3MDY0IiBmb250LXNpemU9IjE0Ij7lnJblg4845pyq6aaJ56S6PC90ZXh0Pgo8L3N2Zz4K';
         };

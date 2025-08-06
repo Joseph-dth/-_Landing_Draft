@@ -6,7 +6,7 @@ function createNavigation(activePage = '') {
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <h2>帆書聽書</h2>
+                    <h2>Money錢<span class="x-gray"> X </span>樊登</h2>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
