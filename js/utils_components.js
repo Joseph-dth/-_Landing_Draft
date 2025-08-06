@@ -51,10 +51,10 @@ function initComponents(activePage = '') {
     const body = document.body;
     body.insertAdjacentHTML('afterbegin', createNavigation(activePage));
     
-    // Insert footer before the last script tag or at the end
-    const scripts = body.querySelectorAll('script');
-    if (scripts.length > 0) {
-        scripts[0].insertAdjacentHTML('beforebegin', createFooter());
+    // Insert footer after main content, before scripts
+    const main = body.querySelector('main');
+    if (main) {
+        main.insertAdjacentHTML('afterend', createFooter());
     } else {
         body.insertAdjacentHTML('beforeend', createFooter());
     }
