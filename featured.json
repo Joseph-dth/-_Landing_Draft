@@ -1,0 +1,102 @@
+[
+    {
+        "name": "如何讓你愛的人愛上你",
+        "title": "如何讓你愛的人愛上你",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0001_如何讓你愛的人愛上你/image.png",
+        "folder": "audiobooks",
+        "folderName": "0001_如何讓你愛的人愛上你"
+    },
+    {
+        "name": "原子習慣",
+        "title": "原子習慣",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0002_原子習慣/image.png",
+        "folder": "audiobooks",
+        "folderName": "0002_原子習慣"
+    },
+    {
+        "name": "高效休息法",
+        "title": "高效休息法",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0003_高效休息法/image.png",
+        "folder": "audiobooks",
+        "folderName": "0003_高效休息法"
+    },
+    {
+        "name": "運動改造大腦",
+        "title": "運動改造大腦",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0004_運動改造大腦/image.png",
+        "folder": "audiobooks",
+        "folderName": "0004_運動改造大腦"
+    },
+    {
+        "name": "《反脆弱》",
+        "title": "《反脆弱》",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "商業財經",
+        "image": "audiobooks/0005_反脆弱/image.png",
+        "folder": "audiobooks",
+        "folderName": "0005_反脆弱"
+    },
+    {
+        "name": "快思慢想",
+        "title": "快思慢想",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0006_快思慢想/image.png",
+        "folder": "audiobooks",
+        "folderName": "0006_快思慢想"
+    },
+    {
+        "name": "活出工作的意義",
+        "title": "活出工作的意義",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "心靈",
+        "image": "audiobooks/0007_活出工作的意義/image.png",
+        "folder": "audiobooks",
+        "folderName": "0007_活出工作的意義"
+    },
+    {
+        "name": "斯坦福高效睡眠法",
+        "title": "斯坦福高效睡眠法",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0008_斯坦福高效睡眠法/image.png",
+        "folder": "audiobooks",
+        "folderName": "0008_斯坦福高效睡眠法"
+    },
+    {
+        "name": "正念飲食",
+        "title": "正念飲食",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "健康生活",
+        "image": "audiobooks/0009_正念飲食/image.png",
+        "folder": "audiobooks",
+        "folderName": "0009_正念飲食"
+    },
+    {
+        "name": "窮查理的普通常識",
+        "title": "窮查理的普通常識",
+        "speaker": "樊登",
+        "price": "99 NTD",
+        "category": "個人成長",
+        "image": "audiobooks/0010_窮查理的普通常識/image.png",
+        "folder": "audiobooks",
+        "folderName": "0010_窮查理的普通常識"
+    }
+]
