@@ -1797,6 +1797,18 @@
             }
         }
 
+        // Calendar carousel scroll function
+        function scrollCalendarCarousel(direction) {
+            const carousel = document.getElementById('calendar-carousel');
+            const scrollAmount = carousel.clientWidth;
+            
+            if (direction === 'left') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
         // Open book detail function
         function openBookDetail(book) {
             const params = new URLSearchParams({
