@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聽書社群 - 與成功者一起成長</title>
+    <!-- Lucide Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #BDA588;
+            --secondary-color: #767064;
+            --light-color: #DDDBDA;
+            --dark-color: #2c2c2c;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #BDA588 0%, #767064 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-minimal {
+            background: transparent;
+            padding: 20px 0;
+        }
+
+        .navbar-full {
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content-minimal .nav-toggle {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(20px);
+        }
+
+        .floating-logo {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+            height: 85vh;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .podcast-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .host-avatars {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .host-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .host-avatar:nth-child(1) { animation-delay: 0.9s; }
+        .host-avatar:nth-child(2) { animation-delay: 1.0s; }
+        .host-avatar:nth-child(3) { animation-delay: 1.1s; }
+        .host-avatar:nth-child(4) { animation-delay: 1.2s; }
+
+        .host-avatar:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .new-guests-badge {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: slideUp 1s ease-out 1.3s forwards;
+        }
+
+        .podcast-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.6s forwards;
+        }
+
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: #BDA588;
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 35px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 40px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 30px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 35px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.2s forwards;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.4s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.6s forwards;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .countdown-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: var(--gradient);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(189, 165, 136, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--light-color);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .feature-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .feature-description {
+            color: var(--secondary-color);
+            line-height: 1.8;
+        }
+
+        /* Teachers Section */
+        .teachers {
+            padding: 100px 0;
+            background: #f8f7f6;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--dark-color);
+        }
+
+        .modal-teacher-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--light-color);
+            border: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .modal-teacher-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        .modal-teacher-hashtag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .modal-teacher-details {
+            text-align: left;
+        }
+
+        .modal-teacher-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-teacher-details li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: var(--secondary-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .modal-teacher-details li:last-child {
+            border-bottom: none;
+        }
+
+        .modal-teacher-details li::before {
+            content: "▪";
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .teacher-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--light-color);
+            border: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .teacher-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .teacher-hashtag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .teacher-details {
+            display: none;
+        }
+
+        /* Suggestion Section */
+        .suggestion {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .suggestion-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+        }
+
+        .suggestion-input {
+            width: 100%;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.9);
+            color: var(--dark-color);
+        }
+
+        .suggestion-input::placeholder {
+            color: var(--secondary-color);
+        }
+
+        .suggestion-btn {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+                    @media (max-width: 768px) {
+            .podcast-title {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .host-avatars {
+                gap: 10px;
+            }
+            
+            .host-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .countdown {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                padding: 30px;
+            }
+
+            .podcast-header {
+                gap: 20px;
+            }
+
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .teacher-card.expanded {
+                grid-column: 1;
+            }
+
+            .teacher-avatar {
+                width: 160px;
+                height: 160px;
+                font-size: 4rem;
+            }
+
+            .teacher-hashtag {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                transform: translate(15%, 15%);
+            }
+
+            .modal-content {
+                margin: 5% auto;
+                padding: 30px;
+                width: 95%;
+            }
+
+            .modal-teacher-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .modal-teacher-name {
+                font-size: 1.8rem;
+            }
+
+            .modal-teacher-details li {
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-minimal">
+        <div class="container">
+            <div class="nav-content nav-content-minimal">
+                <div class="floating-logo">
+                    <div class="logo">帆書聽書</div>
+                </div>
+                <button class="nav-toggle">
+                    <i data-lucide="menu"></i>
+                    <span>選單</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+               
+                
+                <div class="podcast-title">
+                    聽書
+                    <div class="audio-wave">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    社群
+                </div>
+                 <h1>你知道嗎？92% 的高成就者，都靠「閱讀」精進自己</h1>
+                <h2>現在只要1/10的時間，還有一群人陪你一起！</h2>
+                
+                <div class="podcast-header">
+                    <div class="host-avatars">
+                        <div class="host-avatar" title="郝旭烈">郝</div>
+                        <div class="host-avatar" title="閱讀人">閱</div>
+                        <div class="host-avatar" title="文森說書">文</div>
+                        <div class="host-avatar" title="瓦基">瓦</div>
+                    </div>
+                    <div class="new-guests-badge">每週新導師</div>
+                </div>
+                <!-- <p class="hero-description">
+                    和郝旭烈、閱讀人、文森說書、瓦基一起聽書、一起聊成長——<br>
+                    每週導讀＋直播互動，不只是看他們講，更是跟他們對話。<br>
+                    在社群裡一起分享想法、交換心得，讓學習不再孤單。<br>
+                    <strong>限時早鳥專屬，購買帆書聽書，即可解鎖成長夥伴社群！</strong>
+                </p> -->
+            </div>
+            <div class="scroll-indicator">
+                <div style="color: white; font-size: 24px;">⬇</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="countdown-title">距離加入社群只剩</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">07</span>
+                    <span class="countdown-label">日</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">15</span>
+                    <span class="countdown-label">時</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">32</span>
+                    <span class="countdown-label">分</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">45</span>
+                    <span class="countdown-label">秒</span>
+                </div>
+            </div>
+            <a href="#" class="cta-button">加入聽書限定社群，為自己打造更強大的未來！</a>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="teachers">
+        <div class="container">
+            <h2 class="section-title">這些重量級導師每週陪你一起讀書、聊人生！</h2>
+            <p class="section-subtitle">
+                從矽谷主管、百萬部落客，到YouTube說書神人——<br>
+                他們不只是說書，更願意帶你走進書後的世界
+            </p>
+            
+            <div class="teachers-grid">
+                <div class="teacher-card" onclick="openModal('waki')">
+                    <div class="teacher-avatar-container">
+                        <div class="teacher-avatar">瓦</div>
+                        <div class="teacher-hashtag">#職場實戰家</div>
+                    </div>
+                    <h3 class="teacher-name">瓦基</h3>
+                    <div class="teacher-details">
+                        <ul>
+                            <li>前台積電主管，現為專職作家、創業者</li>
+                            <li>經營《閱讀前哨站》部落格與節目《下一本讀什麼？》</li>
+                            <li>電子報訂閱數超過 86,000人，Podcast 陪伴通勤族深獲港澳聽眾共鳴</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="teacher-card" onclick="openModal('hao')">
+                    <div class="teacher-avatar-container">
+                        <div class="teacher-avatar">郝</div>
+                        <div class="teacher-hashtag">#轉職引路人</div>
+                    </div>
+                    <h3 class="teacher-name">郝旭烈</h3>
+                    <div class="teacher-details">
+                        <ul>
+                            <li>台積電前財務主管，轉身成為作家與人氣主持人</li>
+                            <li>Podcast《郝聲音》主打職場轉型與財務規劃，觸及中年重塑議題</li>
+                            <li>擁有穩定忠實粉絲群，頻頻引發聽眾留言與深度討論</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="teacher-card" onclick="openModal('vincent')">
+                    <div class="teacher-avatar-container">
+                        <div class="teacher-avatar">文</div>
+                        <div class="teacher-hashtag">#說書神人</div>
+                    </div>
+                    <h3 class="teacher-name">文森說書</h3>
+                    <div class="teacher-details">
+                        <ul>
+                            <li>YouTube 訂閱數突破 74 萬人，內容超過 254 集</li>
+                            <li>Podcast 評價 4.7 星，涵蓋心理、自我成長等熱門主題</li>
+                            <li>活躍於 Threads、Instagram，多平台觸及廣大閱聽族</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="teacher-card" onclick="openModal('reader')">
+                    <div class="teacher-avatar-container">
+                        <div class="teacher-avatar">閱</div>
+                        <div class="teacher-hashtag">#閱讀社群領袖</div>
+                    </div>
+                    <h3 class="teacher-name">閱讀人</h3>
+                    <div class="teacher-details">
+                        <ul>
+                            <li>26 歲創立閱讀品牌「閱讀人」，結合醫學背景與知識創作力</li>
+                            <li>粉絲專頁追蹤數超過 125 萬人，社團「閱讀人同學會」達 15 萬人</li>
+                            <li>積極舉辦線上讀書會、親子活動、閱讀路跑，深度經營粉絲關係</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Teacher Details -->
+    <div id="teacherModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-teacher-avatar" id="modalAvatar"></div>
+            <h3 class="modal-teacher-name" id="modalName"></h3>
+            <div class="modal-teacher-hashtag" id="modalHashtag"></div>
+            <div class="modal-teacher-details" id="modalDetails"></div>
+        </div>
+    </div>
+
+    <!-- Suggestion Section -->
+    <section class="suggestion">
+        <div class="container">
+            <h2 class="section-title">下一位導師，你來決定！</h2>
+            <p class="section-subtitle">
+                你最想聽誰說書？<br>
+                填寫你想邀請的講者，我們幫你把邀請送出！
+            </p>
+            
+            <form class="suggestion-form">
+                <input type="text" class="suggestion-input" placeholder="輸入你想邀請的講者名稱或建議..." required>
+                <button type="submit" class="suggestion-btn">送出邀請</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">每週一本書，讓成長不再靠意志力，而是靠好系統！</h2>
+            <p class="section-subtitle">
+                別再一個人看書看到睡著，也別再聽完就忘。<br>
+                加入帆書聽書社群，從吸收 → 消化 → 互動 → 行動，一次到位。
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3 class="feature-title">快速系統理解一本書</h3>
+                    <p class="feature-description">
+                        每本書都有 45 分鐘音頻＋心智圖重點整理＋逐字稿，
+                        幫你高效吸收精華，不再花3小時翻到沒重點
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="feature-title">專家導讀＋真實互動</h3>
+                    <p class="feature-description">
+                        每週一位成功人士導讀，從書聊到人生實戰，
+                        不只是吸收知識，更能近距離與導師交流
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="heart-handshake"></i>
+                    </div>
+                    <h3 class="feature-title">社群陪伴不孤單</h3>
+                    <p class="feature-description">
+                        LINE 社群每天交流心得、主題任務、夥伴互相打氣，
+                        上千人陪你一起成長，學習不再只靠自己熬
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+            targetDate.setHours(23, 59, 59, 999);
+            
+            const distance = targetDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.querySelector('.countdown-section').innerHTML = '<h2>活動已結束</h2>';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `all 0.6s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = '#BDA588';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.opacity = '0';
+            sparkle.style.animation = 'sparkle 3s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Add sparkle animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% { opacity: 0; transform: scale(0) rotate(0deg); }
+                50% { opacity: 1; transform: scale(1) rotate(180deg); }
+                100% { opacity: 0; transform: scale(0) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 2000);
+
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Scroll-based navigation
+        const navbar = document.querySelector('.navbar');
+        const navContent = document.querySelector('.nav-content');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Show full navbar
+                navbar.classList.remove('navbar-minimal');
+                navbar.classList.add('navbar-full');
+                navContent.classList.remove('nav-content-minimal');
+            } else {
+                // Show minimal navbar (just floating logo)
+                navbar.classList.remove('navbar-full');
+                navbar.classList.add('navbar-minimal');
+                navContent.classList.add('nav-content-minimal');
+            }
+        });
+
+        // Teacher modal functions
+        const teacherData = {
+            waki: {
+                avatar: '瓦',
+                name: '瓦基',
+                hashtag: '#職場實戰家',
+                details: [
+                    '前台積電主管，現為專職作家、創業者',
+                    '經營《閱讀前哨站》部落格與節目《下一本讀什麼？》',
+                    '電子報訂閱數超過 86,000人，Podcast 陪伴通勤族深獲港澳聽眾共鳴'
+                ]
+            },
+            hao: {
+                avatar: '郝',
+                name: '郝旭烈',
+                hashtag: '#轉職引路人',
+                details: [
+                    '台積電前財務主管，轉身成為作家與人氣主持人',
+                    'Podcast《郝聲音》主打職場轉型與財務規劃，觸及中年重塑議題',
+                    '擁有穩定忠實粉絲群，頻頻引發聽眾留言與深度討論'
+                ]
+            },
+            vincent: {
+                avatar: '文',
+                name: '文森說書',
+                hashtag: '#說書神人',
+                details: [
+                    'YouTube 訂閱數突破 74 萬人，內容超過 254 集',
+                    'Podcast 評價 4.7 星，涵蓋心理、自我成長等熱門主題',
+                    '活躍於 Threads、Instagram，多平台觸及廣大閱聽族'
+                ]
+            },
+            reader: {
+                avatar: '閱',
+                name: '閱讀人',
+                hashtag: '#閱讀社群領袖',
+                details: [
+                    '26 歲創立閱讀品牌「閱讀人」，結合醫學背景與知識創作力',
+                    '粉絲專頁追蹤數超過 125 萬人，社團「閱讀人同學會」達 15 萬人',
+                    '積極舉辦線上讀書會、親子活動、閱讀路跑，深度經營粉絲關係'
+                ]
+            }
+        };
+
+        function openModal(teacherId) {
+            const teacher = teacherData[teacherId];
+            const modal = document.getElementById('teacherModal');
+            
+            document.getElementById('modalAvatar').textContent = teacher.avatar;
+            document.getElementById('modalName').textContent = teacher.name;
+            document.getElementById('modalHashtag').textContent = teacher.hashtag;
+            
+            const detailsHtml = teacher.details.map(detail => `<li>${detail}</li>`).join('');
+            document.getElementById('modalDetails').innerHTML = `<ul>${detailsHtml}</ul>`;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('teacherModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('teacherModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Teacher card toggle function (removed)
+        function toggleTeacher(card) {
+            // This function is no longer needed
+        }
+
+        // Suggestion form handling
+        document.querySelector('.suggestion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = this.querySelector('.suggestion-input');
+            if (input.value.trim()) {
+                alert('感謝您的建議！我們會努力邀請 "' + input.value + '" 來分享！');
+                input.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
